@@ -22,3 +22,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+
+jwt:
+  secret: ZidanPuspitaSecretKeyForJWTTokenGeneration
+  expiration: 3600000 # 1 hour in milliseconds
