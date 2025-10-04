@@ -24,5 +24,5 @@ spring:
             non_contextual_creation: true
 
 jwt:
-  secret: ZidanPuspitaSecretKeyForJWTTokenGeneration
+  secret: { YOUR_SECRET_KEY }
   expiration: 3600000 # 1 hour in milliseconds
