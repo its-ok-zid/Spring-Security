@@ -21,7 +21,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final AuthUtil authUtil;
     private final UserRepository userRepository;
-    private  final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public LoginResponseDTO login(LoginRequestDTO loginRequestDTO) {
         Authentication authentication = authenticationManager.authenticate(
@@ -41,11 +41,13 @@ public class AuthService {
 
         if (user != null) throw new RuntimeException("User already exists");
 
-        user = userRepository.save(User.builder().
-                username(signUpRequestDTO.getUsername())
-                .email(signUpRequestDTO.getEmail())
-                .password(passwordEncoder.encode(signUpRequestDTO.getPassword()))
-                .build());
+        user = userRepository.save(
+                User
+                        .builder()
+                        .username(signUpRequestDTO.getUsername())
+                        .email(signUpRequestDTO.getEmail())
+                        .password(passwordEncoder.encode(signUpRequestDTO.getPassword()))
+                        .build());
 
         return new SignUpResponseDTO(user.getUser_uuid(), user.getUsername());
     }

@@ -8,6 +8,7 @@ import com.zidtech.security.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,13 +20,13 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(LoginRequestDTO loginRequestDTO) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody  LoginRequestDTO loginRequestDTO) {
 
         return ResponseEntity.ok(authService.login(loginRequestDTO));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<SignUpResponseDTO> signup(SignUpRequestDTO signUpRequestDTO) {
+    public ResponseEntity<SignUpResponseDTO> signup(@RequestBody  SignUpRequestDTO signUpRequestDTO) {
         return ResponseEntity.ok(authService.signup(signUpRequestDTO));
     }
 }
